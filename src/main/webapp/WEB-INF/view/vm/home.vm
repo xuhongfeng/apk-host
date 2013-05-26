@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="span8 offset2 well">
-                <form class="form-upload">
+                <form class="form-upload" enctype="multipart/form-data">
                     <legend>apk上传</legend>
                     <div class="fileupload fileupload-new" data-provides="fileupload">
                         <div class="input-append">
@@ -17,7 +17,7 @@
                             <span class="btn btn-file">
                                 <span class="fileupload-new">选择apk</span>
                                 <span class="fileupload-exists">重新选择</span>
-                                <input type="file" />
+                                <input type="file" name="apkFile"/>
                             </span>
                             <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">删除</a>
                         </div>

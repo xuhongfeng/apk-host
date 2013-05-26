@@ -5,18 +5,30 @@ define(function (require, exports, module) {
     "use strict";
 
     var BaseForm = require('./BaseForm');
+    var $ = require('../lib/jquery');
 
     var UploadForm = BaseForm.extend({
         events: {
             'click .btn-submit': 'onSubmit'
         },
 
-        /* ---------- Event Listener ---------- */
+        url: "/upload",
 
-        onSubmit: function (evt) {
-            evt.preventDefault();
-            alert('submit');
+        validateForm: function () {
+            BaseForm.prototype.validateForm.apply(this, arguments);
+        
+            var apkFile = $('input[name="apkFile"]').val();
+            if (!apkFile) {
+                alert('请选择apk文件路径');
+                return false;
+            }
+            return true;
+        },
+
+        onSuccess: function () {
+            alert("上传成功");
         }
+        
     });
 
     return UploadForm;
