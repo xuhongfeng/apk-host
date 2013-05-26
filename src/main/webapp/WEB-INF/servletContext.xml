@@ -12,7 +12,10 @@
 
     <!--Definition of View Resolver -->
     <bean id="viewResolver"
-        class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+        <property name="viewClass"
+            value="org.springframework.web.servlet.view.velocity.VelocityLayoutView" />
+        <property name="layoutUrl" value="layout/default.vm" />
         <property name="prefix" value="" />
         <property name="suffix" value=".vm" />
         <property name="contentType">
