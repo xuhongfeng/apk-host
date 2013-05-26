@@ -13,6 +13,7 @@ import java.io.InputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,23 +25,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  */
 @Controller
-@RequestMapping("/static")
 public class StaticController extends BaseController {
     private static Logger LOG = LoggerFactory.getLogger(StaticController.class);
     
-    @RequestMapping("/**")
+    private static final String[] IMG_EXTENSION = new String[] {
+        "png", "img"
+    };
+    
+    @RequestMapping("/static/**")
     public void get(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String uri = request.getRequestURI();
-
-        String extname = uri.substring(uri.lastIndexOf(".") + 1, uri.length());
-
-        String path = uri.toString().replace("/static/", "");
-        if (extname.equals("js")) {
+        innerGet(request.getRequestURI().toString(), response);
+    }
+    
+    private void innerGet(String path, HttpServletResponse response) throws IOException {
+        path = path.replace("/static/", "");
+        if (FilenameUtils.isExtension(path, "js")) {
             path = "js/" + path;
             response.setContentType("text/javascript; charset=UTF-8");
-        } else if (extname.equals("css")) {
+        } else if (FilenameUtils.isExtension(path, "css")) {
             path = "css/" + path;
             response.setContentType("text/css; charset=UTF-8");
+        } else if (FilenameUtils.isExtension(path, IMG_EXTENSION)) {
+            path = "img/" + path;
+            response.setContentType("image/" + FilenameUtils.getExtension(path));
         }
         path = "view/" + path;
         File file = new File(getWebHome(), path);
@@ -59,6 +66,12 @@ public class StaticController extends BaseController {
         } finally {
             IOUtils.closeQuietly(is);
         }
-        return;
+    }
+    
+    @RequestMapping("/img/**")
+    public void getImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String uri = request.getRequestURI();
+        String path = uri.toString().replace("/img", "/static");
+        innerGet(path, response);
     }
 }

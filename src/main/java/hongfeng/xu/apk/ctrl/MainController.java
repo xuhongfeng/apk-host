@@ -20,8 +20,6 @@ public class MainController extends BaseController {
 
     @RequestMapping("/")
     public String home(ModelMap model) {
-        LOG.info("home...");
-        model.addAttribute("label", "upload");
         return "home";
     }
 }

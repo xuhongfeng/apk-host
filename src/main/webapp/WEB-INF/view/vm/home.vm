@@ -1,3 +1,29 @@
-<div>
-    <input type="button" value="$label"/>
+<div class="page-header">
+    <h1>
+        清华大学Saturn组
+        <small>Android应用安全检测</small>
+    </h1>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span8 offset2 well">
+                <form>
+                    <legend>apk上传</legend>
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                        <div class="input-append">
+                            <div class="uneditable-input span5">
+                                <i class="icon-file fileupload-exists"></i>
+                                <span class="fileupload-preview"></span>
+                            </div>
+                            <span class="btn btn-file">
+                                <span class="fileupload-new">选择apk</span>
+                                <span class="fileupload-exists">重新选择</span>
+                                <input type="file" />
+                            </span>
+                            <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">删除</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
