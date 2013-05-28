@@ -1,0 +1,9 @@
+package data;
+option java_package = "hongfeng.xu.apk.data";
+option java_outer_classname = "Data";
+
+message ApkInfo {
+    required string name = 1;
+    optional string md5 = 2;
+    optional int32 size = 3;
+}
