@@ -3,8 +3,8 @@
 
 package hongfeng.xu.apk.data;
 
-public final class Data {
-  private Data() {}
+public final class Protobuf {
+  private Protobuf() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
@@ -41,15 +41,15 @@ public final class Data {
     com.google.protobuf.ByteString
         getMd5Bytes();
 
-    // optional int32 size = 3;
+    // optional int64 size = 3;
     /**
-     * <code>optional int32 size = 3;</code>
+     * <code>optional int64 size = 3;</code>
      */
     boolean hasSize();
     /**
-     * <code>optional int32 size = 3;</code>
+     * <code>optional int64 size = 3;</code>
      */
-    int getSize();
+    long getSize();
   }
   /**
    * Protobuf type {@code data.ApkInfo}
@@ -114,7 +114,7 @@ public final class Data {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              size_ = input.readInt32();
+              size_ = input.readInt64();
               break;
             }
           }
@@ -131,14 +131,14 @@ public final class Data {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return hongfeng.xu.apk.data.Data.internal_static_data_ApkInfo_descriptor;
+      return hongfeng.xu.apk.data.Protobuf.internal_static_data_ApkInfo_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return hongfeng.xu.apk.data.Data.internal_static_data_ApkInfo_fieldAccessorTable
+      return hongfeng.xu.apk.data.Protobuf.internal_static_data_ApkInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              hongfeng.xu.apk.data.Data.ApkInfo.class, hongfeng.xu.apk.data.Data.ApkInfo.Builder.class);
+              hongfeng.xu.apk.data.Protobuf.ApkInfo.class, hongfeng.xu.apk.data.Protobuf.ApkInfo.Builder.class);
     }
 
     public static com.google.protobuf.Parser<ApkInfo> PARSER =
@@ -243,26 +243,26 @@ public final class Data {
       }
     }
 
-    // optional int32 size = 3;
+    // optional int64 size = 3;
     public static final int SIZE_FIELD_NUMBER = 3;
-    private int size_;
+    private long size_;
     /**
-     * <code>optional int32 size = 3;</code>
+     * <code>optional int64 size = 3;</code>
      */
     public boolean hasSize() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional int32 size = 3;</code>
+     * <code>optional int64 size = 3;</code>
      */
-    public int getSize() {
+    public long getSize() {
       return size_;
     }
 
     private void initFields() {
       name_ = "";
       md5_ = "";
-      size_ = 0;
+      size_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -287,7 +287,7 @@ public final class Data {
         output.writeBytes(2, getMd5Bytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, size_);
+        output.writeInt64(3, size_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -308,7 +308,7 @@ public final class Data {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, size_);
+          .computeInt64Size(3, size_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -322,53 +322,53 @@ public final class Data {
       return super.writeReplace();
     }
 
-    public static hongfeng.xu.apk.data.Data.ApkInfo parseFrom(
+    public static hongfeng.xu.apk.data.Protobuf.ApkInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static hongfeng.xu.apk.data.Data.ApkInfo parseFrom(
+    public static hongfeng.xu.apk.data.Protobuf.ApkInfo parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static hongfeng.xu.apk.data.Data.ApkInfo parseFrom(byte[] data)
+    public static hongfeng.xu.apk.data.Protobuf.ApkInfo parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static hongfeng.xu.apk.data.Data.ApkInfo parseFrom(
+    public static hongfeng.xu.apk.data.Protobuf.ApkInfo parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static hongfeng.xu.apk.data.Data.ApkInfo parseFrom(java.io.InputStream input)
+    public static hongfeng.xu.apk.data.Protobuf.ApkInfo parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static hongfeng.xu.apk.data.Data.ApkInfo parseFrom(
+    public static hongfeng.xu.apk.data.Protobuf.ApkInfo parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static hongfeng.xu.apk.data.Data.ApkInfo parseDelimitedFrom(java.io.InputStream input)
+    public static hongfeng.xu.apk.data.Protobuf.ApkInfo parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static hongfeng.xu.apk.data.Data.ApkInfo parseDelimitedFrom(
+    public static hongfeng.xu.apk.data.Protobuf.ApkInfo parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static hongfeng.xu.apk.data.Data.ApkInfo parseFrom(
+    public static hongfeng.xu.apk.data.Protobuf.ApkInfo parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static hongfeng.xu.apk.data.Data.ApkInfo parseFrom(
+    public static hongfeng.xu.apk.data.Protobuf.ApkInfo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -377,7 +377,7 @@ public final class Data {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(hongfeng.xu.apk.data.Data.ApkInfo prototype) {
+    public static Builder newBuilder(hongfeng.xu.apk.data.Protobuf.ApkInfo prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -393,20 +393,20 @@ public final class Data {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements hongfeng.xu.apk.data.Data.ApkInfoOrBuilder {
+       implements hongfeng.xu.apk.data.Protobuf.ApkInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return hongfeng.xu.apk.data.Data.internal_static_data_ApkInfo_descriptor;
+        return hongfeng.xu.apk.data.Protobuf.internal_static_data_ApkInfo_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return hongfeng.xu.apk.data.Data.internal_static_data_ApkInfo_fieldAccessorTable
+        return hongfeng.xu.apk.data.Protobuf.internal_static_data_ApkInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                hongfeng.xu.apk.data.Data.ApkInfo.class, hongfeng.xu.apk.data.Data.ApkInfo.Builder.class);
+                hongfeng.xu.apk.data.Protobuf.ApkInfo.class, hongfeng.xu.apk.data.Protobuf.ApkInfo.Builder.class);
       }
 
-      // Construct using hongfeng.xu.apk.data.Data.ApkInfo.newBuilder()
+      // Construct using hongfeng.xu.apk.data.Protobuf.ApkInfo.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -430,7 +430,7 @@ public final class Data {
         bitField0_ = (bitField0_ & ~0x00000001);
         md5_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        size_ = 0;
+        size_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
@@ -441,23 +441,23 @@ public final class Data {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return hongfeng.xu.apk.data.Data.internal_static_data_ApkInfo_descriptor;
+        return hongfeng.xu.apk.data.Protobuf.internal_static_data_ApkInfo_descriptor;
       }
 
-      public hongfeng.xu.apk.data.Data.ApkInfo getDefaultInstanceForType() {
-        return hongfeng.xu.apk.data.Data.ApkInfo.getDefaultInstance();
+      public hongfeng.xu.apk.data.Protobuf.ApkInfo getDefaultInstanceForType() {
+        return hongfeng.xu.apk.data.Protobuf.ApkInfo.getDefaultInstance();
       }
 
-      public hongfeng.xu.apk.data.Data.ApkInfo build() {
-        hongfeng.xu.apk.data.Data.ApkInfo result = buildPartial();
+      public hongfeng.xu.apk.data.Protobuf.ApkInfo build() {
+        hongfeng.xu.apk.data.Protobuf.ApkInfo result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public hongfeng.xu.apk.data.Data.ApkInfo buildPartial() {
-        hongfeng.xu.apk.data.Data.ApkInfo result = new hongfeng.xu.apk.data.Data.ApkInfo(this);
+      public hongfeng.xu.apk.data.Protobuf.ApkInfo buildPartial() {
+        hongfeng.xu.apk.data.Protobuf.ApkInfo result = new hongfeng.xu.apk.data.Protobuf.ApkInfo(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -478,16 +478,16 @@ public final class Data {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof hongfeng.xu.apk.data.Data.ApkInfo) {
-          return mergeFrom((hongfeng.xu.apk.data.Data.ApkInfo)other);
+        if (other instanceof hongfeng.xu.apk.data.Protobuf.ApkInfo) {
+          return mergeFrom((hongfeng.xu.apk.data.Protobuf.ApkInfo)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(hongfeng.xu.apk.data.Data.ApkInfo other) {
-        if (other == hongfeng.xu.apk.data.Data.ApkInfo.getDefaultInstance()) return this;
+      public Builder mergeFrom(hongfeng.xu.apk.data.Protobuf.ApkInfo other) {
+        if (other == hongfeng.xu.apk.data.Protobuf.ApkInfo.getDefaultInstance()) return this;
         if (other.hasName()) {
           bitField0_ |= 0x00000001;
           name_ = other.name_;
@@ -517,11 +517,11 @@ public final class Data {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        hongfeng.xu.apk.data.Data.ApkInfo parsedMessage = null;
+        hongfeng.xu.apk.data.Protobuf.ApkInfo parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (hongfeng.xu.apk.data.Data.ApkInfo) e.getUnfinishedMessage();
+          parsedMessage = (hongfeng.xu.apk.data.Protobuf.ApkInfo) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -680,35 +680,35 @@ public final class Data {
         return this;
       }
 
-      // optional int32 size = 3;
-      private int size_ ;
+      // optional int64 size = 3;
+      private long size_ ;
       /**
-       * <code>optional int32 size = 3;</code>
+       * <code>optional int64 size = 3;</code>
        */
       public boolean hasSize() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional int32 size = 3;</code>
+       * <code>optional int64 size = 3;</code>
        */
-      public int getSize() {
+      public long getSize() {
         return size_;
       }
       /**
-       * <code>optional int32 size = 3;</code>
+       * <code>optional int64 size = 3;</code>
        */
-      public Builder setSize(int value) {
+      public Builder setSize(long value) {
         bitField0_ |= 0x00000004;
         size_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 size = 3;</code>
+       * <code>optional int64 size = 3;</code>
        */
       public Builder clearSize() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        size_ = 0;
+        size_ = 0L;
         onChanged();
         return this;
       }
@@ -740,8 +740,8 @@ public final class Data {
     java.lang.String[] descriptorData = {
       "\n#hongfeng/xu/apk/data/Protobuf.proto\022\004d" +
       "ata\"2\n\007ApkInfo\022\014\n\004name\030\001 \002(\t\022\013\n\003md5\030\002 \001(" +
-      "\t\022\014\n\004size\030\003 \001(\005B\034\n\024hongfeng.xu.apk.dataB" +
-      "\004Data"
+      "\t\022\014\n\004size\030\003 \001(\003B \n\024hongfeng.xu.apk.dataB" +
+      "\010Protobuf"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
