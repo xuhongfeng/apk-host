@@ -8,7 +8,7 @@
         <servlet-class>hongfeng.xu.apk.Dispatcher</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>WEB-INF/servletContext.xml</param-value>
+            <param-value>classpath:servletContext.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -23,6 +23,6 @@
     </listener>
     <context-param>
         <param-name>log4jConfigLocation</param-name>
-        <param-value>/WEB-INF/log4j.properties</param-value>
+        <param-value>classpath:log4j.properties</param-value>
     </context-param>
 </web-app>

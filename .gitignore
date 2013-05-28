@@ -1,3 +1,4 @@
 /.settings/
 /target/
 apk-host.log*
+/test-output/
