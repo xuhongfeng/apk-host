@@ -7,6 +7,8 @@ package hongfeng.xu.apk.store;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.commons.io.IOUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataOutputStream;
@@ -25,15 +27,17 @@ import org.springframework.stereotype.Repository;
 public class HdfsStore {
     private static final Logger LOG = LoggerFactory.getLogger(HdfsStore.class);
     
-    private final Configuration conf;
+    private Configuration conf;
     
-    @Value("hadoop.home")
+    @Value("${hadoop.home}")
     private String hadoopHome;
     
-    public HdfsStore() {
+    @PostConstruct
+    private void init() {
         conf = new Configuration();
         conf.addResource(new Path(hadoopHome + "/conf/core-site.xml"));
         conf.addResource(new Path(hadoopHome + "/conf/hdfs-site.xml.xml"));
+        LOG.info("configuration : " + conf);
     }
     
     public void put(InputStream input, Path path) throws IOException {
