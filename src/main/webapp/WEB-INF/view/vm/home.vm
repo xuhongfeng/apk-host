@@ -17,7 +17,7 @@
                             <span class="btn btn-file">
                                 <span class="fileupload-new">选择apk</span>
                                 <span class="fileupload-exists">重新选择</span>
-                                <input type="file" name="apkFile"/>
+                                <input type="file" name="apkFile" accept=".apk"/>
                             </span>
                             <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">删除</a>
                         </div>

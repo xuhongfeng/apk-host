@@ -22,6 +22,10 @@ define(function (require, exports, module) {
                 alert('请选择apk文件路径');
                 return false;
             }
+            if (apkFile.indexOf('.apk', apkFile.length-4) == -1) {
+                alert('只支持上传apk文件');
+                return false;
+            }
             return true;
         },
 
