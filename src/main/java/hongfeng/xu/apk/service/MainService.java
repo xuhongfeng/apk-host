@@ -12,6 +12,7 @@ import hongfeng.xu.apk.util.MD5Utils;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.hadoop.fs.Path;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,10 +46,21 @@ public class MainService {
     public boolean addApk(MultipartFile file) throws IOException {
         InputStream input = file.getInputStream();
         try {
+            Path tmpPath = new Path("tmp/" + file.getOriginalFilename().hashCode()
+                    + "-" + System.currentTimeMillis());
+            //temporary save to HDFS
+            hdfsStore.put(input, tmpPath);
+            
             //compute md5
-            input.mark(Integer.MAX_VALUE);
-            String md5 = md5Utils.md5(input);
-            input.reset();
+            String md5 = null;
+            InputStream tmpInput = null;
+            try {
+                tmpInput = hdfsStore.open(tmpPath);
+                md5 = md5Utils.md5(input);
+            } finally {
+                IOUtils.closeQuietly(tmpInput);
+                hdfsStore.remove(tmpPath);
+            }
             
             //check if exists
             if (redisStore.exists(md5)) {
@@ -56,15 +68,23 @@ public class MainService {
                 return false;
             }
             
-            //save to HDFS
-            hdfsStore.put(input, new Path("apk/" + md5));
-            
+            Path finalPath = new Path("apk/" + md5 + ".apk");
+            hdfsStore.put(input, finalPath);
             //save ApkInfo to redis
-            String fileName = file.getOriginalFilename();
-            ApkInfo info = ApkInfo.newBuilder().setName(fileName)
-                .setMd5(md5).setSize(file.getSize()).build();
-            LOG.info(info.toString());
-            redisStore.put(info);
+            try {
+                String fileName = file.getOriginalFilename();
+                ApkInfo info = ApkInfo.newBuilder().setName(fileName)
+                    .setMd5(md5).setSize(file.getSize()).build();
+                LOG.info(info.toString());
+                redisStore.put(info);
+            } catch (Throwable e) {
+                hdfsStore.remove(finalPath);
+                if (e instanceof IOException) {
+                    throw (IOException)e;
+                } else {
+                    throw new IOException(e);
+                }
+            }
             
             return true;
         } finally {
